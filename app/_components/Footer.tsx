@@ -41,16 +41,18 @@ export default function Footer() {
             </div>
             <div className="flex flex-col gap-5">
               <FooterColumn title={SOCIALS.title}>
-                {SOCIALS.links.map((social) => (
-                  <Link href="/" key={social}>
-                    <Image
-                      src={social}
-                      alt="social logo"
-                      width={24}
-                      height={24}
-                    />
-                  </Link>
-                ))}
+                <ul className="regular-14 flex gap-4 text-gray-30">
+                  {SOCIALS.links.map((social) => (
+                    <Link href="/" key={social}>
+                      <Image
+                        src={social}
+                        alt="social logo"
+                        width={24}
+                        height={24}
+                      />
+                    </Link>
+                  ))}
+                </ul>
               </FooterColumn>
             </div>
           </div>
@@ -64,11 +66,11 @@ interface FooterColumnProps {
   title: string;
   children: React.ReactNode;
 }
-
-export const FooterColumn = ({ title }: FooterColumnProps) => {
+const FooterColumn = ({ title, children }: FooterColumnProps) => {
   return (
     <div className="flex flex-col gap-5">
       <h4 className="bold-18 whitespace-nowrap">{title}</h4>
+      {children}
     </div>
   );
 };
